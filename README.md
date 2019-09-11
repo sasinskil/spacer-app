@@ -1,5 +1,7 @@
 # spacer-app
 
+This app uses NASA image API to fetch images and display them after passing search query.
+
 ## Project setup
 ```
 npm install
@@ -20,10 +22,3 @@ npm run build
 npm run test
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
