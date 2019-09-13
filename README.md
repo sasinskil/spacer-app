@@ -1,6 +1,6 @@
 # spacer-app
 
-This app uses NASA image API to fetch images and display them after passing search query.
+This app uses [NASA image API](https://images.nasa.gov/docs/images.nasa.gov_api_docs.pdf) to fetch images and display them after passing search query.
 
 ## Project setup
 ```
