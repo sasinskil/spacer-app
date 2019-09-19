@@ -37,18 +37,16 @@ export default {
     handleInput: debounce(function() {
       axios
         .get(`${API}?q=${this.searchValue}&media_type=image`)
-        .then(resp => 
-          (this.results = resp.data.collection.items))
-        .catch(error => {
+        .then((resp) => (this.results = resp.data.collection.items))
+        .catch((error) => {
           console.log(error);
         });
-    }, 500)
-  }
+    }, 500),
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-
 .container {
   width: 100%;
   margin: 0;
