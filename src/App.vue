@@ -9,8 +9,21 @@
     <Header v-if="step === 0" />
     <SearchInput v-model="searchValue" @input="handleInput" :dark="step === 1" />
     <div class="results" v-if="results && !loading && step === 1">
-      <Item v-for="item in results" :item="item" :key="item.data[0].nasa_id" />
+      <Item
+        v-for="item in results"
+        :item="item"
+        :key="item.data[0].nasa_id"
+        @click.native="handleModalOpen(item)"
+      />
     </div>
+    <div class="loading" v-if="step === 1 && loading">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <Modal v-if="modalOpen" :item="modalItem" @closeModal="modalOpen = false" />
   </div>
 </template>
 
@@ -21,6 +34,7 @@ import Header from "@/components/Header.vue";
 import SearchInput from "@/components/SearchInput.vue";
 import HeroImage from "@/components/HeroImage.vue";
 import Item from "@/components/Item.vue";
+import Modal from "@/components/Modal.vue";
 
 const API = "https://images-api.nasa.gov/search";
 
@@ -30,10 +44,13 @@ export default {
     Header,
     SearchInput,
     HeroImage,
-    Item
+    Item,
+    Modal
   },
   data() {
     return {
+      modalOpen: false,
+      modalItem: null,
       loading: false,
       step: 0,
       searchValue: "",
@@ -41,6 +58,11 @@ export default {
     };
   },
   methods: {
+    handleModalOpen(item) {
+      this.modalOpen = true;
+      this.modalItem = item;
+    },
+
     handleInput: debounce(function() {
       this.loading = true;
       axios
@@ -147,6 +169,54 @@ body {
   @media screen and(min-width: 768px) {
     grid-gap: 1.5rem;
     grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.loading {
+  margin-top: 7rem;
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+  color: #1e3d4a;
+
+  @media screen and(min-width: 768px) {
+    width: 84px;
+    height: 84px;
+  }
+}
+.loading div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 51px;
+  height: 51px;
+  margin: 6px;
+  border: 6px solid #1e3d4a;
+  border-radius: 50%;
+  animation: loading 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #1e3d4a transparent transparent transparent;
+
+   @media screen and(min-width: 768px) {
+    width: 84px;
+    height: 84px;
+  }
+}
+.loading div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.loading div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.loading div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 </style>
