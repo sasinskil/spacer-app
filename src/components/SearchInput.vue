@@ -5,6 +5,7 @@
       type="text"
       id="search"
       name="search"
+      :class="{ dark }"
       :value="value"
       @input="handleChange"
     />
@@ -17,12 +18,16 @@ export default {
   props: {
     value: {
       type: String,
-      required: true,
+      required: true
     },
+    dark: {
+      type: Boolean,
+      default: false
+    }
   },
   methods: {
     handleChange(e) {
-      this.$emit('input', e.target.value);
+      this.$emit("input", e.target.value);
     }
   }
 };
@@ -62,6 +67,16 @@ export default {
       outline: none;
       box-shadow: 0 10px 10px -9px rgba(255, 255, 255, 0.5);
     }
+  }
+}
+
+.dark {
+  color: #1e3d4a;
+  border-bottom-color: #1e3d4a;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 10px 10px -9px rgba(#1e3d4a, 0.5);
   }
 }
 </style>
