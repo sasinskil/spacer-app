@@ -26,13 +26,30 @@ export default {
 }
 
 .header {
-    font-size: 3rem;
+    font-size: 3.2rem;
     margin: 0;
+
+    @media screen and(min-width: 768px) {
+        margin-bottom: 2.5rem;
+        font-size: 4rem;
+    }
+
+    @media screen and(min-width: 1024px) {
+        font-size: 5rem;
+    }
 }
 
 .paragraph {
-    margin-top: 1.3rem;
+    margin-top: 1.1rem;
     font-size: 0.8rem;
+    max-width: 500px;
+    font-weight: 200;
+
+    @media screen and(min-width: 768px) {
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        line-height: 1;
+    }
 }
 
 </style>
