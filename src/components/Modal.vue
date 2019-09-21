@@ -1,9 +1,6 @@
 <template>
   <div class="modal-container">
     <div class="main-container">
-      <div class="photo">
-        <img :src="photo" alt="Moon" />
-      </div>
       <div class="description">
         <h2 class="description__title">{{title}}</h2>
         <p class="description__about">{{description}}</p>
@@ -24,13 +21,11 @@ export default {
   },
   data() {
     return {
-      photo: null,
       title: null,
       description: null
     };
   },
   mounted() {
-    (this.photo = this.item.links[0].href),
       (this.title = this.item.data[0].title),
       (this.description = this.item.data[0].description);
   }
@@ -49,8 +44,8 @@ export default {
   left: 0;
 
   @media screen and (min-width: 1024px) {
-    max-width: 70%;
-    height: 60%;
+    max-width: 650px;
+    height: 40vh;
     left: 0;
     top: 0;
     bottom: 0;
@@ -75,7 +70,7 @@ export default {
     top: 10px;
     width: 100%;
     height: 2px;
-    background: black;
+    background: #1e3d4a;
     display: block;
   }
 
@@ -93,7 +88,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: 1rem;
   height: 100%;
 
   @media screen and (min-width: 1024px) {
@@ -106,31 +101,17 @@ export default {
   }
 }
 
-.photo {
-  width: 80%;
-
-  @media screen and(max-width: 768px) {
-    margin: 5rem 0 2rem;
-  }
-
-  img {
-    width: 100%;
-  }
-}
-
 .description {
-  height: 100%;
-  padding: 0.5rem;
+  
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  padding: 0.5rem;
 
   &__title {
     margin: 0;
   }
   &__about {
-    max-height: 400px;
+    max-height: 250px;
     overflow: auto;
 
     @media screen and(max-width: 454px) {
@@ -147,7 +128,7 @@ export default {
 
     @media screen and (min-width: 1024px) {
       max-width: 450px;
-      max-height: 300px;
+      max-height: 170px;
       overflow: auto;
     }
   }
