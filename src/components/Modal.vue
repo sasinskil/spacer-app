@@ -45,7 +45,7 @@ export default {
 
   @media screen and (min-width: 1024px) {
     max-width: 650px;
-    height: 40vh;
+    height: 50vh;
     left: 0;
     top: 0;
     bottom: 0;
@@ -113,6 +113,7 @@ export default {
   &__about {
     max-height: 250px;
     overflow: auto;
+    overflow-wrap: break-word;
 
     @media screen and(max-width: 454px) {
       max-width: 350px;
