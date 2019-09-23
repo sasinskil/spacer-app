@@ -5,6 +5,8 @@
 
 This app uses [NASA image API](https://images.nasa.gov/docs/images.nasa.gov_api_docs.pdf) to fetch images and display them after passing search query.
 
+Netlify - [Live!](https://practical-tesla-4ae0b3.netlify.com/)
+
 ## Project setup
 ```
 npm install
